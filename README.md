@@ -1,8 +1,3 @@
-# NixOS dotfiles
-
-*My configuration files for NixOS. Feel free to look around and copy!* 
-
-
 # Special thanks to:
 - [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix)
 
