@@ -1,7 +1,3 @@
-# Special thanks to:
-- [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix)
-
-
 ## Installation
 
 Clone the repo and cd into it:
@@ -61,4 +57,8 @@ sudo nixos-rebuild switch --flake .#yourComputer
 ```
 
 And that should be it! If there are any issues please don't hesistate to [submit an issue](https://github.com/eldersys/nixos/issues) or contact me.
+
+### Special thanks to:
+- [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix)
+
 
