@@ -19,7 +19,7 @@ in {
       shellAliases = {
         ll = "ls -l";
         edit = "sudo -e";
-        update = "nixos-rebuild switch --flake $NIXOS_CONFIG_DIR --fast";
+        update = "sudo nixos-rebuild switch --flake $NIXOS_CONFIG_DIR";
         clean-old = "sudo nix-collect-garbage --delete-old";
       };
 
