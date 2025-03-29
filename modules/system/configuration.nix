@@ -122,6 +122,12 @@
   environment.localBinInPath = true;
 
   environment.etc.openvpn.source = pkgs.update-resolv-conf;
+
+  environment.variables = {
+  	NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
+        NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
+	EDITOR = "nvim";
+  };
     
   users.extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm"];
 
