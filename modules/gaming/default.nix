@@ -10,7 +10,6 @@ in {
         lutris
 	protonup
 	prismlauncher
-	discord
 	heroic
       ];
     };
