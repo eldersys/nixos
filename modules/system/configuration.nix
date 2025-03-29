@@ -93,22 +93,6 @@
   #hardware.pulseaudio.package = pkgs.pulseaudioFull;
   #nixpkgs.config.pulseaudio = true;
 
-   hardware.opengl = {
-        enable = true;
-        driSupport = true;
-       };
-      
-      services.xserver.videoDrivers = ["nvidia"];
-      
-      hardware.nvidia = {
-       modesetting.enable = true;
-       powerManagement.enable = false;
-       powerManagement.finegrained = false;
-       open = false;
-       nvidiaSettings = true;
-       package = config.boot.kernelPackages.nvidiaPackages.stable;
-     };
-
 
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = true; # enables support for Bluetooth

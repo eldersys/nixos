@@ -5,6 +5,7 @@
   config.modules = {
     
     i3.enable = true;
+    nvidia.enable = false;
     
     zsh.enable = true;
     tmux.enable = true;

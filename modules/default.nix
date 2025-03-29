@@ -6,6 +6,7 @@
 
     # Services
     ./i3
+    ./nvidia
 
     # CLI 
     # ---
