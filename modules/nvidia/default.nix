@@ -7,19 +7,19 @@ in {
   options.modules.nvidia = { enable = mkEnableOption "nvidia";};
 
   config = mkIf cfg.enable {
-    hardware.nvidia = {
-    	enable = true;
-	driSupport = true;
-    };
+   # hardware.nvidia = {
+   # 	enable = true;
+#	driSupport = true;
+ #   };
 
-    service.xserver.VideoDrivers = ["nvidia"];
+  #  service.xserver.VideoDrivers = ["nvidia"];
 
-    hardware.nvidia = {
-    	modesetting.enable = true;
-	powerManagement.enable = false;
-	powerManagement.finegrained = false;
-	open = false;
-	package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
+   # hardware.nvidia = {
+    #	modesetting.enable = true;
+#	powerManagement.enable = false;
+#	powerManagement.finegrained = false;
+#	open = false;
+	# package = config.boot.kernelPackages.nvidiaPackages.stable;
+ #   };
   };
 }
