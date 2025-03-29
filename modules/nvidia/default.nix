@@ -12,7 +12,7 @@ in {
 	driSupport = true;
     };
 
-    service.xserver.VideoDrivers = ["nvidia"]
+    service.xserver.VideoDrivers = ["nvidia"];
 
     hardware.nvidia = {
     	modesetting.enable = true;
