@@ -204,7 +204,7 @@ bindsym $mod+o exec obsidian
 bindsym $mod+s exec kitty pulsemixer
 bindsym $mod+c exec kitty khal interactive
 bindsym $mod+Shift+b exec kitty bluetuith
-bindsym $mod+Shift+s exec rofi-screenshot
+bindsym $mod+Shift+s exec xfce4-screenshooter
 bindsym $mod+p exec appimage-run /home/iohannes/Pictures/PureRef-2.0.3_x64.Appimage
 
 gaps inner 20
