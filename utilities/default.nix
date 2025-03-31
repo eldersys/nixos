@@ -22,6 +22,7 @@ in {
       ripgrep
       ranger
       xfce.thunar
+      xfce.xfce4-screenshooter
       discord
     ];
   };
