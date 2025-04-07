@@ -7,6 +7,8 @@
     i3.enable = true;
     nvidia.enable = false;
     
+    build.enable = true;
+
     zsh.enable = true;
     tmux.enable = true;
     git.enable = true;
@@ -23,7 +25,7 @@
     obsidian.enable = true;
     libreoffice.enable = false;
 
-    design-tools.enable = false;
+    design-tools.enable = true;
     comp-graphics.enable = false;
     game-engines.unity.enable = false;
     game-engines.godot.enable = true;
