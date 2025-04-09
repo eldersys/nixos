@@ -24,7 +24,6 @@ in {
       xfce.thunar
       xfce.xfce4-screenshooter
       discord
-      udisks
     ];
   };
 }

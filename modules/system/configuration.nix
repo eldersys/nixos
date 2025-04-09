@@ -166,6 +166,7 @@
     bruno
     dotnet-sdk
     bluetuith
+    gnome-disk-utility
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
