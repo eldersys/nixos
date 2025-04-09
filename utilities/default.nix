@@ -24,6 +24,7 @@ in {
       xfce.thunar
       xfce.xfce4-screenshooter
       discord
+      gnome-disk-utility
     ];
   };
 }
