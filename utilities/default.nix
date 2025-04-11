@@ -21,9 +21,10 @@ in {
       fzf
       ripgrep
       ranger
-      xfce.thunar
+      gnome.nautilus
       xfce.xfce4-screenshooter
       discord
+      unetbootin
     ];
   };
 }
