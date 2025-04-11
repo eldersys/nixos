@@ -87,6 +87,9 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
+  programs.gnome-disks.enable = true;
+  services.udisks2.enable = true;
+
 
   #sound.enable = true;
   #hardware.pulseaudio.enable = true;
@@ -166,7 +169,6 @@
     bruno
     dotnet-sdk
     bluetuith
-    gnome-disk-utility
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
