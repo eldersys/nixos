@@ -11,8 +11,8 @@ in {
     	neovim
     ];
 
-    home.file.".config/nvim" = {
-    	source = ./config;
+    home.file.".config/nvim/init.lua" = {
+    	source = ./config/init.lua;
 	recursive = true;
     };
   };

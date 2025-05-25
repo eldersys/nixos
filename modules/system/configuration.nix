@@ -212,7 +212,7 @@
     enable = true;
   };
 
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
   };
 
