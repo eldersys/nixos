@@ -247,6 +247,8 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  services.gnome3.gnome-keyring.enable = true;
   
   fonts.packages = with pkgs; [
     noto-fonts
