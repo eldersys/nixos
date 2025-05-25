@@ -5,8 +5,6 @@
   config.modules = {
     
     i3.enable = true;
-    nvidia.enable = false;
-    
     build.enable = true;
 
     zsh.enable = true;
