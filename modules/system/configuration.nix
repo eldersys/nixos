@@ -118,7 +118,7 @@
       steam-run
       cobra-cli
       flameshot
-      gnome-seahorse
+      gnome.seahorse
     ];
   };
 
