@@ -118,6 +118,7 @@
       steam-run
       cobra-cli
       flameshot
+      gnome-seahorse
     ];
   };
 
@@ -247,10 +248,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  services.gnome.gnome-keyring.enable = true;
+
   
   fonts.packages = with pkgs; [
     noto-fonts
