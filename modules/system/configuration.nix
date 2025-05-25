@@ -115,7 +115,6 @@
       zola
       vscode
       stremio
-      qbittorrent
       steam-run
       cobra-cli
       flameshot
@@ -248,7 +247,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   
   fonts.packages = with pkgs; [
     noto-fonts
