@@ -87,27 +87,13 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
+  programs.gnome-disks.enable = true;
+  services.udisks2.enable = true;
 
   #sound.enable = true;
   #hardware.pulseaudio.enable = true;
   #hardware.pulseaudio.package = pkgs.pulseaudioFull;
   #nixpkgs.config.pulseaudio = true;
-
-   hardware.opengl = {
-        enable = true;
-        driSupport = true;
-       };
-      
-      services.xserver.videoDrivers = ["nvidia"];
-      
-      hardware.nvidia = {
-       modesetting.enable = true;
-       powerManagement.enable = false;
-       powerManagement.finegrained = false;
-       open = false;
-       nvidiaSettings = true;
-       package = config.boot.kernelPackages.nvidiaPackages.stable;
-     };
 
 
   hardware.enableAllFirmware = true;
@@ -143,6 +129,12 @@
   environment.localBinInPath = true;
 
   environment.etc.openvpn.source = pkgs.update-resolv-conf;
+
+  environment.variables = {
+  	NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
+        NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
+	EDITOR = "nvim";
+  };
     
   users.extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm"];
 

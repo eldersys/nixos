@@ -57,6 +57,7 @@
   in {
       nixosConfigurations = {
         aegis = mkSystem inputs.nixpkgs "x86_64-linux" "aegis";
+	orion = mkSystem inputs.nixpkgs "x86_64-linux" "orion";
       };
     };
 }

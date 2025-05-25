@@ -1,12 +1,3 @@
-# NixOS dotfiles
-
-*My configuration files for NixOS. Feel free to look around and copy!* 
-
-
-# Special thanks to:
-- [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix)
-
-
 ## Installation
 
 Clone the repo and cd into it:
@@ -32,9 +23,7 @@ You can either add or create your own output in `flake.nix`, by following this t
 nixosConfigurations = {
     # Now, defining a new system is can be done in one line
     #                                Architecture   Hostname
-    laptop = mkSystem inputs.nixpkgs "x86_64-linux" "laptop";
-    desktop = mkSystem inputs.nixpkgs "x86_64-linux" "desktop";
-    # ADD YOUR COMPUTER HERE! (feel free to remove mine)
+    # ADD YOUR COMPUTER HERE!
     yourComputer = mkSystem inputs.nixpkgs "x86_64-linux" "yourComputer";
 };
 ```
@@ -47,17 +36,14 @@ Next, create `hosts/yourComputer/user.nix`, a configuration file for your system
     imports = [ ../../modules/default.nix ];
     config.modules = {
         # gui
-        hyprland.enable = true;
+        i3.enable = true;
 
         # cli
-        nvim.enable = true;
-
-        # system
-        xdg.enable = true;
+        zsh.enable = true;
     };
 }
 ```
-The above config installs and configures hyprland, nvim, and xdg user directories. Each config is modularized so you don't have to worry about having to install the software alongside it, since the module does it for you. Every available module can be found in the `modules` directory.
+The above config installs and configures i3, zsh, user directories. Each config is modularized so you don't have to worry about having to install the software alongside it, since the module does it for you. Every available module can be found in the `modules` directory.
 
 Lastly, build the configuration with 
 
@@ -66,4 +52,10 @@ sudo nixos-rebuild switch --flake .#yourComputer
 ```
 
 And that should be it! If there are any issues please don't hesistate to [submit an issue](https://github.com/eldersys/nixos/issues) or contact me.
+
+---
+
+### Special thanks to:
+- [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix)
+
 

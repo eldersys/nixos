@@ -6,6 +6,8 @@
 
     # Services
     ./i3
+    ./nvidia
+    ./build
 
     # CLI 
     # ---

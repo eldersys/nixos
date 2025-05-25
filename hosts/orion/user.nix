@@ -5,28 +5,29 @@
   config.modules = {
     
     i3.enable = true;
-    nvidia.enable = true;
+    nvidia.enable = false;
     
+    build.enable = true;
+
     zsh.enable = true;
     tmux.enable = true;
     git.enable = true;
     archive.enable = true;
     utilities.enable = true;
     kitty.enable = true;
-    nvim.enable = true;
 
-    gaming.enable = true;
+    gaming.enable = false;
     video.enable = true;
 
     firefox.enable = true;
-    chrome.enable = true;
+    chrome.enable = false;
 
     obsidian.enable = true;
     libreoffice.enable = false;
 
     design-tools.enable = true;
-    comp-graphics.enable = true;
-    game-engines.unity.enable = true;
-    game-engines.godot.enable = false;
+    comp-graphics.enable = false;
+    game-engines.unity.enable = false;
+    game-engines.godot.enable = true;
   };
 }
