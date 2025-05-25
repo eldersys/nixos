@@ -247,7 +247,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  services.gnome.gnome-keyring.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  }
   
   fonts.packages = with pkgs; [
     noto-fonts
