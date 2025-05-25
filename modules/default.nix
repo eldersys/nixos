@@ -13,6 +13,7 @@
     ./tmux 
     ./git
     ./archive
+    ./nvim
 
     # GUI
     # ---

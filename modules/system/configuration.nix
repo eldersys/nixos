@@ -128,6 +128,11 @@
       rofi
       zola
       vscode
+      stremio
+      qbittorrent
+      steam-run
+      cobra-cli
+      flameshot
     ];
   };
 
@@ -146,6 +151,7 @@
   nixpkgs.config.nvidia.acceptLicense = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0" 
+    "qbittorrent-4.6.4"
   ];
 
   nix.extraOptions = ''
@@ -155,7 +161,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
     android-studio
     devenv
     wget
@@ -176,6 +181,26 @@
     bruno
     dotnet-sdk
     bluetuith
+    # Create an FHS environment using the command `fhs`, enabling the execution of non-NixOS packages in NixOS!
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+      pkgs.buildFHSUserEnv (base // {
+      name = "fhs";
+      targetPkgs = pkgs: 
+        # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
+        # lacking many basic packages needed by most software.
+        # Therefore, we need to add them manually.
+        #
+        # pkgs.appimageTools provides basic packages required by most software.
+        (base.targetPkgs pkgs) ++ (with pkgs; [
+          pkg-config
+          ncurses
+          # Feel free to add more packages here if needed.
+        ]
+      );
+      profile = "export FHS=1";
+      runScript = "bash";
+      extraOutputsToInstall = ["dev"];
+    }))
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -194,247 +219,9 @@
   programs.gamemode = lib.mkIf (config.networking.hostName == "aegis") {
     enable = true;
   };
- 
-  # Nixvim config
- #programs.nixvim.plugins = {
 
- #   # Buffer bar
- #   bufferline = {
- #     enable = true;
- #   };
-
- #   # Status bar
- #   lualine = {
- #     enable = true;
- #   };
-
- #   # Includes all parsers for treesitter
- #   treesitter = {
- #     enable = true;
- #   };
-
- #   tmux-navigator.enable = true;
-
- #   # Icons 
- #   # web-devicons.enable = true;
- #   
- #   # Linting
- #   lint = {
- #     enable = true;
- #     lintersByFt = {
- #       text = ["vale"];
- #       json = ["jsonlint"];
- #       markdown = ["vale"];
- #       rst = ["vale"];
- #       dockerfile = ["hadolint"];
- #     };
- #   };
-
- #   # Good old Telescope
- #   telescope = {
- #     enable = true;
- #     extensions = {
- #       fzf-native = {
- #         enable = true;
- #       };
- #     };
- #     keymaps = {
- #       "<Space>ff" = {
- #         action = "find_files";
- #         options = {
- #           desc = "Fuzzy find a file";
- #         };
- #       };
- #       "<Space>fb" = {
- #         action = "buffers";
- #         options = {
- #           desc = "Find buffers";
- #         };
- #       };
- #       "<Space>fw" = {
- #         action = "grep_string";
- #         options = {
- #           desc = "Find word under cursor";
- #         };
- #       };
- #       "<Space>gc" = {
- #         action = "git_commits";
- #         options = {
- #           desc = "Search git commit";
- #         };
- #       };
- #     };
-
- #     settings = {
- #       defaults = {
- #         file_ignore_patterns = [
- #           "^.git/"
- #           "^.mypy_cache/"
- #           "^__pycache__/"
- #           "^output/"
- #           "^data/"
- #           "%.ipynb"
- #         ];
- #         layout_config = {
- #         prompt_position = "top";
- #       };
-
- #       mappings = {
- #         i = {
- #           "<A-j>" = {
- #             __raw = "require('telescope.actions').move_selection_next";
- #           };
- #           "<A-k>" = {
- #             __raw = "require('telescope.actions').move_selection_previous";
- #           };
- #         };
- #       };
- #       selection_caret = "> ";
- #       set_env = {
- #         COLORTERM = "truecolor";
- #       };
- #       sorting_strategy = "ascending";
- #     };
- #   };
- # };
-
- #   # Highlight word under cursor
- #   illuminate = {
- #     enable = true;
- #     underCursor = false;
- #     filetypesDenylist = [
- #       "Outline"
- #       "TelescopePrompt"
- #       "alpha"
- #       "harpoon"
- #       "reason"
- #     ];
- #   };
-
- #   # Dashboard
- #   alpha = {
- #     enable = true;
- #     theme = "dashboard";
- #     # iconsEnabled = true; # Deprecated
- #   };
-
- #   # Nix expressions in Neovim
- #   nix = {
- #     enable = true;
- #   };
-
- #    # Language server
- #   lsp = {
- #     enable = true;
- #     servers = {
- #       # Average webdev LSPs
- #       #tsserver.enable = true; # TS/JS
- #       cssls.enable = true; # CSS
- #       html.enable = true; # HTML
- #       dartls.enable = true;
- #       pyright.enable = true; # Python
- #       marksman.enable = true; # Markdown
- #       nixd.enable = true; # Nix
- #       dockerls.enable = true; # Docker
- #       bashls.enable = true; # Bash
- #       clangd.enable = true; # C/C++
- #       csharp_ls.enable = true; # C#
- #       yamlls.enable = true; # YAML
- #       #gdscript.enable = true; # GDScript 
- #       #gdshader_lsp.enable = true; # Godot Shader language
- #       gopls = { # Golang
- #         enable = true;
- #         autostart = true;
- #       };
-
- #       lua_ls = { # Lua
- #         enable = true;
- #         settings.telemetry.enable = false;
- #       };
-
- #     };
- #   };
-
- #   luasnip = {
- #     enable = true;
- #     fromSnipmate = [
- #       {
- #         paths = "$\{HOME}/.vim-snippets/snippets/dart.snippets";
- #         include = [ "dart" ];
- #       }
- #       {
- #         paths = "$\{HOME}/.vim-snippets/snippets/dart-flutter.snippets";
- #         include = [ "dart" ];
- #       }
- #     ];
- #   };
- #   cmp = {
- #     enable = true;
- #     autoEnableSources = true;
- #     settings = {
- #       formatting = { fields = [ "kind" "abbr" "menu" ]; };
- #       sources = [
- #           {name = "nvim_lsp";}
- #           {name = "path";}
- #           {name = "buffer";}
- #           {name = "luasnip";}
- #         ];
-
- #       window = {
- #         completion = { border = "solid"; };
- #         documentation = { border = "solid"; };
- #       };
-
- #       mapping = {
- #         "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
- #         "<A-j>" = "cmp.mapping.select_next_item()";
- #         "<A-k>" = "cmp.mapping.select_prev_item()";
- #         "<A-e>" = "cmp.mapping.abort()";
- #         "<A-b>" = "cmp.mapping.scroll_docs(-4)";
- #         "<A-f>" = "cmp.mapping.scroll_docs(4)";
- #         "<C-Space>" = "cmp.mapping.complete()";
- #         "<CR>" = "cmp.mapping.confirm({ select = true })";
- #         "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
- #         "<C-l>" = ''
- #           cmp.mapping(function()
- #             if luasnip.expand_or_locally_jumpable() then
- #               luasnip.expand_or_jump()
- #             end
- #           end, { 'i', 's' })
- #         '';
- #         "<C-h>" = ''
- #           cmp.mapping(function()
- #             if luasnip.locally_jumpable(-1) then
- #               luasnip.jump(-1)
- #             end
- #           end, { 'i', 's' })
- #         '';
- #       };
- #       
- #       cmdline.luasnip.snippet.expand = "
- #         function(args)
- #           require('luasnip').lsp_expand(args.body)
- #         end
- #       ";
-
- #     };
- #   };
- # };
-
- # programs.nixvim.colorschemes.catppuccin = {
- #   enable = true;
- #   settings.flavour = "frappe";
- # };
-
-
-
-  # Options
-#programs.nixvim.options = {
-#    number = true;         # Show line numbers
-#    relativenumber = true; # Show relative line numbers
-#    shiftwidth = 2;        # Tab width should be 2
-#  };
-
+  #nvim.source = "/home/iohannes/.config/nvim";
+  
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk

@@ -9,11 +9,6 @@
        inputs.nixpkgs.follows = "nixpkgs";
      };
 
-    nixvim = {
-       url = "github:nix-community/nixvim/nixos-24.05";
-       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +22,6 @@
     system = "x86_64-linux";
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     lib = nixpkgs.lib; 
-    nixvim = nixvim.homeManagerModules.nixvim;
     
     # Lets us reuse the code to "create" a system
     # Credits sioodmy and notusknot

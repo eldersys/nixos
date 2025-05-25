@@ -12,6 +12,7 @@
     archive.enable = true;
     utilities.enable = true;
     kitty.enable = true;
+    nvim.enable = true;
 
     gaming.enable = true;
     video.enable = true;
@@ -25,6 +26,6 @@
     design-tools.enable = true;
     comp-graphics.enable = true;
     game-engines.unity.enable = true;
-    game-engines.godot.enable = true;
+    game-engines.godot.enable = false;
   };
 }

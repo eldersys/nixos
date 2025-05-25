@@ -197,14 +197,14 @@ for_window [title="Android Emulator - flutter-test:5554"] floating enable
 bindsym $mod+w exec firefox
 bindsym $mod+d exec discord
 bindsym $mod+k exec keepassxc
-bindsym $mod+g exec godot4
+bindsym $mod+g exec steam-run /home/iohannes/Documents/godot
 bindsym $mod+u exec unityhub
 bindsym $mod+b exec blender
 bindsym $mod+o exec obsidian
 bindsym $mod+s exec kitty pulsemixer
 bindsym $mod+c exec kitty khal interactive
 bindsym $mod+Shift+b exec kitty bluetuith
-bindsym $mod+Shift+s exec rofi-screenshot
+bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+p exec appimage-run /home/iohannes/Pictures/PureRef-2.0.3_x64.Appimage
 
 gaps inner 20
