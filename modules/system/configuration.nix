@@ -250,7 +250,7 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-  }
+  };
   
   fonts.packages = with pkgs; [
     noto-fonts
